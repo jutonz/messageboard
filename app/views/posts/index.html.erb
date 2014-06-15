@@ -1,0 +1,10 @@
+<h1>You're making a post!</h1>
+
+<% @posts.each do |post| %>
+<div>
+	<%= post.name %>
+</div>
+<% end %>
+<hr>
+
+<%= link_to "Add Post!", new_post_path %>
