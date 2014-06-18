@@ -1,10 +1,22 @@
-<h1>You're making a post!</h1>
-
-<% @posts.each do |post| %>
-<div>
-	<%= post.name %>
-</div>
-<% end %>
+<h1>Welcome to the Messageboard</h1>
+<h3>Current Threads</h3>
+<!-- If there are no posts -->
+<!-- <p>There are currently no threads. You should create one!</p> -->
+<table>
+  <thead>
+    <th>
+      <td>Title</td>
+    </th>
+  </thead>
+  <tbody>
+  <% @posts.each do |post| %>
+  <tr>
+      <td>
+        <%= link_to post.title, post_path(post) %>
+      </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
 <hr>
-
-<%= link_to "Add Post!", new_post_path %>
+<%= link_to "Create a post", new_post_path %>

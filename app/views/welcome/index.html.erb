@@ -1,1 +1,12 @@
-<h1>Hi!</h1>
+<h1>Welcome to the Messageboard</h1>
+<h3>Current Threads</h3>
+
+<%= link_to "Create a thread", new_thread_path %>
+<!-- If there are no posts -->
+<!-- <p>There are currently no threads. You should create one!</p> -->
+
+<% threads.each do |thread| %>
+<div class="threadTitle">
+	<p>thread.title</p>
+</div>
+<% end %>
