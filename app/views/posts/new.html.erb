@@ -1,7 +1,12 @@
-<h2>New Post</h2>
+<h1>Create a new post</h1>
 <%= form_for @post do |form| %>
-	<%= form.label :name %>
-	<%= form.text_field :name %>
-	<br>
+	<fieldset> 
+		<%= form.label :title %>
+		<%= form.text_field :title %>
+	</fieldset>
+	<fieldset>
+		<%= form.label :contents %>
+		<%= form.text_area :contents %>
+	</fieldset>
 	<%= form.submit %>
 <% end %>
