@@ -1,4 +1,15 @@
-<h1> <%= @post.title %> </h1>
+<h1><%= @post.title %></h1>
 <p><%= @post.contents %></p>
+<h3>Comments</h3>
 
-<%= link_to "All posts", posts_path %>
+<% if (@comments.size == 0) then %>
+  <p>There are no comments. You should post one!</p>
+
+<% else %>
+  <% @comments.each do |comment| %>
+    <p><%= comment.contents %></p>
+  <% end %>
+<% end %>
+
+<%= link_to "Post a comment", new_comment_path(post_id: params[:id]) %><br>
+<%= link_to "Return to all posts", posts_path %>

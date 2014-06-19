@@ -1,22 +1,20 @@
 <h1>Welcome to the Messageboard</h1>
-<h3>Current Threads</h3>
-<!-- If there are no posts -->
-<!-- <p>There are currently no threads. You should create one!</p> -->
-<table>
-  <thead>
-    <th>
-      <td>Title</td>
-    </th>
-  </thead>
-  <tbody>
-  <% @posts.each do |post| %>
-  <tr>
-      <td>
-        <%= link_to post.title, post_path(post) %>
-      </td>
-  </tr>
+<div class="post_list">
+  <h3>Current Posts</h3>
+  <!-- If there are no posts -->
+  <% if (@posts.size() == 0) then%>
+  <p>There are currently no posts. You should create one!</p>
+
+  <!-- If there are posts, display them in a list. -->
+  <% else %>
+    <table>
+      <tbody>
+        <% @posts.reverse.each do |post| %>
+          <tr><td><%= link_to post.title, post_path(post) %></td></tr>
+        <% end %>
+      </tbody>
+    </table>
+  <hr>
   <% end %>
-  </tbody>
-</table>
-<hr>
+</div>
 <%= link_to "Create a post", new_post_path %>
