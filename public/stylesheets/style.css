@@ -1,0 +1,51 @@
+html {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.post_list {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #F2F2F2;
+  border-radius: 5px;
+  width: 1024px;
+}
+
+.post_list table {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+fieldset {
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Field in which the title of a post is specified */
+.input_title_field {
+  overflow: hidden;
+  width: 1024px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#post_title {
+  width: 100%;
+}
+
+.input_title_field span {
+  display: block;
+  overflow: hidden;
+  padding-left: 5px;
+}
+
+.input_title_field label {
+  float: left;
+}
+
+/* Field in which the contents of a post are specified */
+#post_contents {
+  width: 1024px;
+}
