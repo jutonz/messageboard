@@ -1,12 +1,10 @@
 <h1>New Comment</h1>
-<%= form_for @comment do |form| %>
+<%= form_for [@post, @comment] do |form| %>
 
   <fieldset> 
     <%= form.label :contents %>
     <%= form.text_field :contents %>
   </fieldset>
-	
-  <%= form.hidden_field :post_id, value: params[:post_id] %>
 
 	<%= form.submit %>
 

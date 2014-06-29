@@ -1,0 +1,11 @@
+<%= form_for @user, url: login_path do |form| %>
+
+  <%= form.label :email %>
+  <%= form.text_field :email, placeholder: "bob@example.com" %>
+
+  <%= form.label :password %>
+  <%= form.password_field :password %>  
+
+  <%= form.submit %>
+
+<% end %>

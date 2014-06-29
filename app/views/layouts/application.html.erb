@@ -9,6 +9,15 @@
 </head>
 <body>
 
+<div>
+  <% if current_user.logged_in? %>
+    <p>Hello, <%= current_user.display_name %></p>
+    <p><%= link_to 'logout', logout_path, method: 'delete' %></p>
+  <% else %>
+    <p><%= link_to 'login', login_path %></p>
+  <% end %>
+</div>
+
 <%= yield %>
 
 </body>

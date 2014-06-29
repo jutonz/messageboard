@@ -1,22 +1,36 @@
 class CommentsController < ApplicationController
+	before_action :find_post
 
 	def index
-		@comments = Comment.all
+		@comments = @post.comments
 	end
 
 	def new 
-		@comment = Comment.new
+		@comment = @post.comments.build
 	end
 
 	def create
-		@comment = Comment.new(comment_params)
+		@comment = @post.comments.build comment_params
+		@comment.user = current_user
 		@comment.save
-		redirect_to post_path(Post.find { |post| post.id == @comment.post_id })
+		redirect_to post_path(@post)
+	end
+
+	def destroy
+		if current_user.admin?
+			comment = @post.comments.find_by id: params[:id]
+			comment.try :destroy
+		end
+		redirect_to post_path(@post)
 	end
 
 	private 
 
 	def comment_params
-		params.require(:comment).permit(:post_id, :contents)
+		params.require(:comment).permit(:contents)
+	end
+
+	def find_post
+		@post = Post.find_by! id: params[:post_id]
 	end
 end

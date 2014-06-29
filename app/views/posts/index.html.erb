@@ -6,11 +6,7 @@
     <h3>Current Posts</h3>
 
     <!-- If there are no posts -->
-    <% if (@posts.size() == 0) then%>
-    <p>There are currently no posts. You should create one!</p>
-
-    <!-- If there are posts, display them in a list. -->
-    <% else %>
+    <% if @posts.any? %>
     <div class="post_list">
       <table>
         <tbody>
@@ -18,12 +14,16 @@
           <tr class="post_box">
             <td><%= link_to post.title, post_path(post) %></td>
             <td><%= post.created_at %></td>
+            <td>by <%= post.created_by %></td>
           </tr>
         <% end %>
         </tbody>
       </table>
       <hr>
-      <% end %>
+    <!-- If there are posts, display them in a list. -->
+    <% else %>
+      <p>There are currently no posts. You should create one!</p>
+    <% end %>
       <%= link_to "Create a post", new_post_path %>
     </div>
   </div>

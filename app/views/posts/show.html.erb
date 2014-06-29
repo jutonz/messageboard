@@ -1,15 +1,34 @@
-<h1><%= @post.title %></h1>
-<p><%= @post.contents %></p>
-<h3>Comments</h3>
+<div class="content">
+  <div class="current_posts">
+    <h1><%= @post.title %></h1>
+    <h3>Created by <%= @post.created_by %></h3> 
+    <p><%= @post.contents %></p>
+  </div>
+  <div class="current_posts">
+    <h3>Comments</h3>
 
-<% if (@comments.size == 0) then %>
-  <p>There are no comments. You should post one!</p>
+    <% if @comments.any? %>
+      <div class="post_list">
+        <table>
+          <% @comments.each do |comment| %>
+            <tr class="post_box">
+              <td><%= comment.contents %></td>
+              <td><%= comment.formatted_date %></td>
+              <td>by <%= comment.created_by %></td>
+              <% if current_user.admin? %>
+                <td><%= link_to 'Delete', post_comment_path(@post, comment), method: 'delete' %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    <% else %>
+      <p>There are no comments. You should post one!</p>
+      
+    <% end %>
 
-<% else %>
-  <% @comments.each do |comment| %>
-    <p><%= comment.contents %></p>
-  <% end %>
-<% end %>
+    <%= link_to "Post a comment", new_post_comment_path(@post) %><br>
+  </div>
 
-<%= link_to "Post a comment", new_comment_path(post_id: params[:id]) %><br>
-<%= link_to "Return to all posts", posts_path %>
+  <%= link_to "Return to all posts", posts_path %>
+</div>

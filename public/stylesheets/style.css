@@ -12,6 +12,13 @@
   background-color: #DADADA;
   border-radius: 7px;
   padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.post_list {
+  margin-bottom: 5px;
 }
 
 .post_list table {
@@ -26,4 +33,18 @@
   background-color: #F2F2F2;
   padding: 10px;
   margin-bottom: 2px;
+}
+
+.post_box:nth-child(1) {
+  border-top: 2px solid black;
+}
+
+.post_box {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.post_box td:nth-child(2){
+  text-align: right;
 }
