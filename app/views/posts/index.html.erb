@@ -8,13 +8,13 @@
     <!-- If there are no posts -->
     <% if @posts.any? %>
     <div class="post_list">
-      <table>
+      <table class="table table-hover">
         <tbody>
         <% @posts.reverse.each do |post| %>
-          <tr class="post_box">
+          <tr>
             <td><%= link_to post.title, post_path(post) %></td>
-            <td><%= post.created_at %></td>
-            <td>by <%= post.created_by %></td>
+            <td><%= post.formatted_date %></td>
+            <td><%= post.created_by %></td>
           </tr>
         <% end %>
         </tbody>

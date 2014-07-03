@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Messageboard</title>
-  <%= stylesheet_link_tag    'style', media: 'all' %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', :media => 'all' %>
+  <%= javascript_include_tag 'application' %> 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -17,8 +17,9 @@
     <p><%= link_to 'login', login_path %></p>
   <% end %>
 </div>
-
-<%= yield %>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>
