@@ -1,5 +1,4 @@
-
-<%= bootstrap_form_for @user, :html => { class: 'form-signin' }, url: login_path do |form| %>
+<%= bootstrap_form_for @user, html: { class: 'form-signin' }, url: login_path do |form| %>
   <h2 class="form-signin-heading">Please sign in</h2>
   <%= form.email_field :email, placeholder: 'bob@example.com' %>
   <%= form.password_field :password %>
