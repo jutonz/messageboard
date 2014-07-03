@@ -1,34 +1,33 @@
-<div class="content">
-  <div class="current_posts">
-    <h1><%= @post.title %></h1>
-    <h3>Created by <%= @post.created_by %></h3> 
-    <p><%= @post.contents %></p>
-  </div>
-  <div class="current_posts">
-    <h3>Comments</h3>
-
-    <% if @comments.any? %>
-      <div class="post_list">
-        <table>
-          <% @comments.each do |comment| %>
-            <tr class="post_box">
-              <td><%= comment.contents %></td>
-              <td><%= comment.formatted_date %></td>
-              <td><%= comment.created_by %></td>
-              <% if current_user.admin? %>
-                <td><%= link_to 'Delete', post_comment_path(@post, comment), method: 'delete' %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    <% else %>
-      <p>There are no comments. You should post one!</p>
-      
-    <% end %>
-
-    <%= link_to "Post a comment", new_post_comment_path(@post) %><br>
-  </div>
-
-  <%= link_to "Return to all posts", posts_path %>
+<h1><%= @post.title %></h1>
+<div class="row">
+  <div class="span3">Created by <%= @post.created_by %></div>
+  <div class="span9"><%= @post.contents %></div>
 </div>
+
+<h3 class="small">Comments</h3>
+<% if @comments.any? %>
+    <table class="table table-hover">
+      <thead>
+        <th></th>
+        <th>Date</th>
+        <th>Poster</th>
+      </thead>  
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.contents %></td>
+          <td><%= comment.formatted_date %></td>
+          <td><%= comment.created_by %></td>
+          <% if current_user.admin? %>
+            <td><%= link_to 'Delete', post_comment_path(@post, comment), method: 'delete' %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+<% else %>
+  <p>There are no comments. You should post one!</p>
+  
+<% end %>
+
+<%= link_to "Post a comment", new_post_comment_path(@post) %><br>
+
+<%= link_to "Return to all posts", posts_path %>
