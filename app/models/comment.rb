@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
   end
 
   def formatted_date
-    created_at.in_time_zone("Eastern Time (US & Canada)").strftime("Posted on %e %b %Y at %H:%M")
+    created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%e %b %Y at %H:%M")
   end
 
   private

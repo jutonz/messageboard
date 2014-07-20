@@ -1,31 +1,28 @@
-<h1><%= @post.title %></h1>
-<div class="row">
+<!-- <h1><%= @post.title %></h1> -->
+<!-- <div class="row">
   <div class="span3">Created by <%= @post.created_by %></div>
   <div class="span9"><%= @post.contents %></div>
+</div> -->
+<div class="jumbotron">
+  <h1><%= @post.title %></h1>
+  <p class="lead"><%= @post.contents %></p>
+  <p class="text-muted">Posted by <%= @post.created_by %> on <%= @post.formatted_date %></p>
 </div>
 
-<h3 class="small">Comments</h3>
+
+<h3>Comments</h3>
 <% if @comments.any? %>
-    <table class="table table-hover">
-      <thead>
-        <th></th>
-        <th>Date</th>
-        <th>Poster</th>
-      </thead>  
-      <% @comments.each do |comment| %>
-        <tr>
-          <td><%= comment.contents %></td>
-          <td><%= comment.formatted_date %></td>
-          <td><%= comment.created_by %></td>
-          <% if current_user.admin? %>
-            <td><%= link_to 'Delete', post_comment_path(@post, comment), method: 'delete' %></td>
-          <% end %>
-        </tr>
+  <% @comments.reverse.each do |comment| %>
+    <blockquote>
+      <p><%= comment.contents %></p>
+      <footer><%= comment.created_by %> on <%= comment.formatted_date %></footer>
+      <% if current_user.admin? %>
+        <footer><%= link_to 'Delete', post_comment_path(@post, comment), method: 'delete' %></footer>
       <% end %>
-    </table>
+    </blockquote>
+  <% end %>
 <% else %>
   <p>There are no comments. You should post one!</p>
-  
 <% end %>
 
 <%= link_to "Post a comment", new_post_comment_path(@post) %><br>
