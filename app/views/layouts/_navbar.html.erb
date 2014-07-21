@@ -1,0 +1,13 @@
+<div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li class="active"><a>Hello, <%= current_user.display_name %></a></li>
+      <li><%= link_to 'home', posts_path %></li>
+      <% if current_user.logged_in? %>
+        <li><%= link_to 'logout', logout_path, method: 'delete' %></li>
+      <% else %>
+        <li><%= link_to 'login/register', login_path %></li>
+      <% end %>
+    </ul>
+    <h3 class="text-muted">Messageboard</h3>
+    <hr>
+  </div>
