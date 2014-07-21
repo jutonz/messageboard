@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
+    @disable_nav = true;
   end
 
   def create
