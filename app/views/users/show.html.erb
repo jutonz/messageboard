@@ -1,0 +1,26 @@
+<% if @displayed_user == nil %>
+  <h1>That user doesn't exist :(</h1>
+  <p><%= link_to 'Click here to go back', :back %></p>
+<% else %>
+  <% if params[:id].to_f == current_user.id %>
+    <h1>Hi, <%= current_user.display_name %></h1>
+    <p>Here are some statistics about your stay with us so far:</p>
+    <ul>
+      <li>You joined us on <%= current_user.join_date %>. (That's <%= current_user.time_since_joined %>)</li>
+      <li>Since then you've made <%= pluralize(@posts.length, 'post') %> and commented <%= @comments.length %> times.</li>
+    </ul>
+    <h2>Posts you've made</h2>
+    <% if @posts.any? %>
+      <%= render partial: 'posts/posts_table', object: @posts %>
+    <% else %>
+      <p>You haven't made any posts yet. You should get on that! :P</p>
+    <% end %>
+  <% end %>
+  <h2>Posts on which you've commented</h2>
+  <% if @commented_posts.any? %>
+    <%= render partial: 'posts/posts_table', object: @commented_posts %>
+  <% else %>
+    <p>You haven't commented on any posts yet.</p>
+  <% end %>
+<% end %>
+

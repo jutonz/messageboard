@@ -1,0 +1,7 @@
+<%= bootstrap_form_for @user, url: signup_path, html: { class: 'form-signin'} do |form| %>
+<%= form.text_field :display_name %>
+<%= form.email_field :email %>
+<%= form.password_field :password %>
+<%= form.password_field :password_confirmation %>
+<%= form.submit 'Sign Up', class: 'btn btn-lg btn-primary btn-block' %>
+<% end %>

@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:long_just_date] = "%B %e, %Y"

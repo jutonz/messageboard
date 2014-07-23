@@ -3,6 +3,7 @@
       <li class="active"><a>Hello, <%= current_user.display_name %></a></li>
       <li><%= link_to 'home', posts_path %></li>
       <% if current_user.logged_in? %>
+        <li><%= link_to 'profile', user_path(current_user) %></li>
         <li><%= link_to 'logout', logout_path, method: 'delete' %></li>
       <% else %>
         <li><%= link_to 'login/register', login_path %></li>
