@@ -15,6 +15,8 @@ class UsersController < ApplicationController
 
   def show
     @displayed_user = User.find_by(id: params[:id].to_f)
+    @viewing_own_profile = @displayed_user.id == current_user.id
+    @display_name = @displayed_user.display_name
     if @displayed_user != nil
       @user = current_user
       @posts = Post.where(user_id: @displayed_user.id)
@@ -26,7 +28,7 @@ class UsersController < ApplicationController
           commented.push comment.post_id
         end
         commented = commented.uniq
-        @commented_posts = Post.find_by(id: commented)
+        @commented_posts = Post.where(id: commented)
       end
     end
   end

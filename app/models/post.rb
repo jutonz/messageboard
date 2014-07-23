@@ -2,6 +2,9 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments
 
+  validates :title, presence: true, length: { maximum: 100 }
+  validates :contents, presence: true, length: { maximum: 500 }
+
   def created_by
     post_user.display_name
   end

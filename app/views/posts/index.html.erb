@@ -1,13 +1,10 @@
 <div class="content">
   <div class="current_posts">
     <h3>Current Posts</h3>
-
-    <!-- If there are no posts -->
     <% if @posts.any? %>
     <div class="post_list">
       <%= render partial: 'posts_table', object: @posts %>
       <hr>
-    <!-- If there are posts, display them in a list. -->
     <% else %>
       <p>There are currently no posts. You should create one!</p>
     <% end %>

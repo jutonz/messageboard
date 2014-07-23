@@ -1,14 +1,6 @@
 <h1>Create a new post</h1>
-<%= form_for @post do |form| %>
-
-	<fieldset class="input_title_field"> 
-		<%= form.label :title %>
-		<span><%= form.text_field :title %></span>
-	</fieldset>
-
-	<fieldset class="input_contents_area">
-		<%= form.text_area :contents, :value => "Message contents" %>
-	</fieldset>
-
-	<%= form.submit %>
+<%= bootstrap_form_for @post do |form| %>
+		<%= form.text_field :title, placeholder: 'I\'m Bob!' %>
+		<%= form.text_area :contents, placeholder: 'I like pie!' %>
+	<%= form.submit 'Post to messageboard', class: 'btn btn-lg btn-primary' %>
 <% end %>

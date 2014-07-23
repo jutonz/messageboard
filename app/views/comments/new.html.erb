@@ -1,11 +1,5 @@
-<h1>New Comment</h1>
-<%= form_for [@post, @comment] do |form| %>
-
-  <fieldset> 
-    <%= form.label :contents %>
-    <%= form.text_field :contents %>
-  </fieldset>
-
-	<%= form.submit %>
-
+<h1>Add a comment</h1>
+<%= bootstrap_form_for [@post, @comment] do |form| %>
+  <%= form.text_field :contents, placeholder: 'This is the best messageboard ever!' %>
+	<%= form.submit 'Add comment', class: 'btn btn-lg btn-primary' %>
 <% end %>

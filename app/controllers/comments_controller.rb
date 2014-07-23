@@ -13,8 +13,11 @@ class CommentsController < ApplicationController
 	def create
 		@comment = @post.comments.build comment_params
 		@comment.user = current_user
-		@comment.save
-		redirect_to post_path(@post)
+		if @comment.save
+		  redirect_to post_path(@post)
+		else
+			render 'new'
+		end
 	end
 
 	def destroy

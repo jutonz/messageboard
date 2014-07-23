@@ -2,6 +2,8 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   belongs_to :user
 
+  validates :contents, presence: true
+
   def created_by
     comment_user.display_name
   end

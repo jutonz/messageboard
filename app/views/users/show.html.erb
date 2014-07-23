@@ -2,25 +2,44 @@
   <h1>That user doesn't exist :(</h1>
   <p><%= link_to 'Click here to go back', :back %></p>
 <% else %>
-  <% if params[:id].to_f == current_user.id %>
-    <h1>Hi, <%= current_user.display_name %></h1>
+  <% if @viewing_own_profile %>
+    <h1>Hi, <%= @display_name %></h1>
     <p>Here are some statistics about your stay with us so far:</p>
     <ul>
-      <li>You joined us on <%= current_user.join_date %>. (That's <%= current_user.time_since_joined %>)</li>
-      <li>Since then you've made <%= pluralize(@posts.length, 'post') %> and commented <%= @comments.length %> times.</li>
+      <li>You joined us on <%= @displayed_user.join_date %>. (That's <%= @displayed_user.time_since_joined %>)</li>
+      <li>Since then you have made <%= pluralize(@posts.length, 'post') %> and commented <%= @comments.length %> times.</li>
     </ul>
     <h2>Posts you've made</h2>
     <% if @posts.any? %>
       <%= render partial: 'posts/posts_table', object: @posts %>
     <% else %>
-      <p>You haven't made any posts yet. You should get on that! :P</p>
+      <p>You have yet to make any posts. You should get on that! :P</p>
     <% end %>
-  <% end %>
-  <h2>Posts on which you've commented</h2>
-  <% if @commented_posts.any? %>
-    <%= render partial: 'posts/posts_table', object: @commented_posts %>
+    <h2>Posts on which you've commented</h2>
+    <% if @commented_posts.any? %>
+      <%= render partial: 'posts/posts_table', object: @commented_posts %>
+    <% else %>
+      <p>You haven't commented on any posts yet.</p>
+    <% end %>
   <% else %>
-    <p>You haven't commented on any posts yet.</p>
+    <h1>You're viewing <%= @display_name %>'s profile</h1>
+    <p>Here are some statistics about his or her stay with us so far:</p>
+    <ul>
+      <li>He or she joined us on <%= @displayed_user.join_date %>. (That's <%= @displayed_user.time_since_joined %>)</li>
+      <li>Since then he or she has made <%= pluralize(@posts.length, 'post') %> and commented <%= @comments.length %> times.</li>
+    </ul>
+    <h2>Posts by <%= @display_name %></h2>
+    <% if @posts.any? %>
+      <%= render partial: 'posts/posts_table', object: @posts %>
+    <% else %>
+      <p><%= @display_name %> has yet to make any posts. You should encourage him or her to do so :P</p>
+    <% end %>
+    <h2>Posts on which <%= @display_name %> has commented</h2>
+    <% if @commented_posts.any? %>
+      <%= render partial: 'posts/posts_table', object: @commented_posts %>
+    <% else %>
+      <p><%= @display_name %> hasn't commented on any posts yet.</p>
+    <% end %>
   <% end %>
 <% end %>
 
