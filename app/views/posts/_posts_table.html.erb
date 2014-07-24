@@ -5,9 +5,9 @@
       <td><%= link_to post.title, post_path(post) %></td>
       <td><%= post.formatted_date %></td>
       <td>
-        <%= link_to post.created_by, user_path(post.user_id) %>
+        <%= render partial: 'link_to_post_author', locals: { post: post } %>
         <% if post.comments.any? %>
-          <span class="small">+ <%= pluralize(post.comments.length, 'comment') %> </span>
+          <span class="small">+ <%= pluralize(post.comments.length, 'comment') %></span>
         <% end %>
       </td>
     </tr>

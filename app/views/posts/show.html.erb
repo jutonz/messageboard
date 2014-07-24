@@ -6,19 +6,13 @@
 <div class="jumbotron">
   <h1><%= @post.title %></h1>
   <p class="lead"><%= @post.contents %></p>
-  <p class="text-muted">Posted by <%= link_to @post.created_by, user_path(@post.user_id) %> on <%= @post.formatted_date %></p>
+  <p class="text-muted">Posted by <%= render partial: 'link_to_post_author', locals: { post: @post } %> on <%= @post.formatted_date %></p>
 </div>
 
 <h3>Comments</h3>
 <% if @comments.any? %>
   <% @comments.reverse.each do |comment| %>
-    <blockquote>
-      <p><%= comment.contents %></p>
-      <footer><%= link_to comment.created_by, user_path(comment.user_id) %> on <%= comment.formatted_date %></footer>
-      <% if current_user.admin? %>
-        <footer><%= link_to 'Delete', post_comment_path(@post, comment), method: 'delete' %></footer>
-      <% end %>
-    </blockquote>
+    <%= render comment %>
   <% end %>
 <% else %>
   <p>There are no comments. You should post one!</p>

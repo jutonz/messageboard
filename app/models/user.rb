@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
   has_many :posts
   has_many :comments
 
@@ -23,7 +24,7 @@ class User < ActiveRecord::Base
     if created_at.to_date == Date.today
       'today!'
     else
-      time_ago_in_words(current_user.created_at) + ' ago.'
+      time_ago_in_words(created_at) + ' ago.'
     end
   end
 

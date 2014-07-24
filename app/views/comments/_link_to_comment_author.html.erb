@@ -1,0 +1,7 @@
+<% if comment != nil %>
+  <% if comment.user_id == nil %>
+    <%= User.new.display_name %> on <%= comment.formatted_date %>
+  <% else %>
+    <%= link_to comment.created_by, user_path(comment.user_id) %> on <%= comment.formatted_date %>
+  <% end %>
+<% end %>

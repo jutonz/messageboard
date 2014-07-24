@@ -1,0 +1,5 @@
+<% if post.user_id == nil %>
+  Guest
+<% else %>
+  <%= link_to post.created_by, user_path(post.user_id) %>
+<% end %>

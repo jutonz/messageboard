@@ -1,14 +1,10 @@
 <div class="content">
-  <div class="current_posts">
-    <h3>Current Posts</h3>
-    <% if @posts.any? %>
-    <div class="post_list">
-      <%= render partial: 'posts_table', object: @posts %>
-      <hr>
-    <% else %>
-      <p>There are currently no posts. You should create one!</p>
-    <% end %>
-      <%= link_to "Create a post", new_post_path %>
-    </div>
-  </div>
+  <h1>Current Posts</h1>
+  <% if @posts.any? %>
+    <%= render partial: 'posts_table', object: @posts %>
+    <hr>
+  <% else %>
+    <p>There are currently no posts. You should create one!</p>
+  <% end %>
+  <%= link_to "Create a post", new_post_path, class: 'btn btn-lg btn-primary' %>
 </div>

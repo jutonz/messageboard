@@ -1,0 +1,13 @@
+<blockquote>
+  <p><%= comment.contents %></p>
+  <% if comment.user_id == nil %>
+    <footer><%= User.new.display_name %> on <%= comment.formatted_date %></footer>
+  <% else %>
+    <footer><%= link_to comment.created_by, user_path(comment.user_id) %> on <%= comment.formatted_date %></footer>
+  <% end %>
+  <% if current_user.admin? %>
+    <footer><%= link_to 'Delete', post_comment_path(@post, comment), method: 'delete' %></footer>
+  <% elsif current_user.id == comment.user_id %>
+    <footer><%= link_to 'Edit', edit_comment_path(@post, comment) %></footer>
+  <% end %>
+</blockquote>
