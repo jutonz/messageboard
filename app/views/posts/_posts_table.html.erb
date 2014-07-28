@@ -5,7 +5,7 @@
       <td><%= link_to post.title, post_path(post) %></td>
       <td><%= post.formatted_date %></td>
       <td>
-        <%= render partial: 'link_to_post_author', locals: { post: post } %>
+        <%= render partial: 'posts/link_to_post_author', locals: { post: post } %>
         <% if post.comments.any? %>
           <span class="small">+ <%= pluralize(post.comments.length, 'comment') %></span>
         <% end %>
