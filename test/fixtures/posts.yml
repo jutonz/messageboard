@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  contents: MyString
-  post_id: 1
+justins:
+  title: "Justin's Post"
+  contents: "I am so super mega cool, because I have a cat shirt."
+  user: justin
 
-two:
-  title: MyString
-  contents: MyString
-  post_id: 1
+jeremys:
+  title: "Jeremy's Post"
+  contents: "I wish I was as cool as justin, and I will probably steal that shirt."
+  user: jeremy
