@@ -7,7 +7,8 @@
   <% end %>
   <% if current_user.admin? %>
     <footer><%= link_to 'Delete', post_comment_path(@post, comment), method: 'delete' %></footer>
-  <% elsif current_user.id == comment.user_id %>
-    <footer><%= link_to 'Edit', edit_comment_path(@post, comment) %></footer>
+  <% end %>
+  <% if current_user.id == comment.user_id %>
+    <footer><%= link_to 'Edit', edit_post_comment_path(@post, comment) %></footer>
   <% end %>
 </blockquote>

@@ -10,6 +10,10 @@ class CommentsController < ApplicationController
 		@comment = @post.comments.build
 	end
 
+	def edit
+		
+	end
+
 	def create
 		@comment = @post.comments.build comment_params
 		@comment.user = current_user

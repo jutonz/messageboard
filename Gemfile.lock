@@ -42,6 +42,8 @@ GEM
     commonjs (0.2.7)
     erubis (2.7.0)
     execjs (2.2.0)
+    font-awesome-less (4.0.2)
+      less-rails (>= 2.4.2)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (2.1.0)
@@ -138,6 +140,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap_form
   coffee-rails (~> 4.0.0)
+  font-awesome-less
   jbuilder (~> 2.0)
   jquery-rails
   less-rails

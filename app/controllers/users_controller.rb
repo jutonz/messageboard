@@ -15,22 +15,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @displayed_user = User.find_by(id: params[:id].to_f)
+    @displayed_user = User.includes(:posts).find_by(id: params[:id].to_f)
     @viewing_own_profile = @displayed_user.id == current_user.id
     @display_name = @displayed_user.display_name
     if @displayed_user != nil
       @user = current_user
-      @posts = Post.where(user_id: @displayed_user.id)
+      @posts = @displayed_user.posts
       @comments = Comment.where(user_id: @displayed_user.id)
-      @commented_posts = Array.new
-      if @comments.any?
-        commented = Array.new
-        @comments.each do |comment|
-          commented.push comment.post_id
-        end
-        commented = commented.uniq
-        @commented_posts = Post.where(id: commented)
-      end
+      @commented_posts = @displayed_user.comments
     end
   end
 

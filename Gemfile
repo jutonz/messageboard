@@ -44,3 +44,5 @@ gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 # To automatically handle creating Bootstrap-friendly forms
 gem 'bootstrap_form'
+# For iconic fonts 
+gem 'font-awesome-less'
