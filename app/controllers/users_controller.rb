@@ -4,6 +4,41 @@ class UsersController < ApplicationController
     # @disable_nav = true;
   end
 
+  def edit
+    user = User.find params[:id]
+    if can? :update, user
+      @user = user
+    end
+  end
+
+  def update
+    @user = User.find params[:id]
+    if @user.authenticate edit_params[:password_old]
+      if @user.update user_params
+        redirect_to root_url
+      else
+        render 'users/edit'
+      end
+    else
+      flash[:notice] = 'Incorrect current password'
+      render 'users/edit'
+    end
+    @password_old = params[:password_old]
+    # @user.display_name = user_params[:display_name]
+    # @user.email = user_params[:email]
+    # if @user.authenticate(params[:password_old])
+    #   @user.password = user_params[:password]
+    #   @user.password_confirmation = user_params[:password_confirmation]
+    #   if @user.save
+    #     redirect_to root_url
+    #   else
+    #     render 'users/edit'
+    #   end
+    # else 
+    #   # Incorrect old password
+    # end
+  end
+
   def create 
     @user = User.new(user_params)
     if @user.save
@@ -29,5 +64,9 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:display_name, :email, :password, :password_confirmation)
+  end
+
+  def edit_params
+    params.require(:user).permit(:display_name, :email, :password, :password_confirmation, :password_old)
   end
 end

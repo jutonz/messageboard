@@ -10,6 +10,9 @@
 <body>
 <div class="container">
   <%= render 'layouts/navbar' unless @disable_nav %>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
   <%= yield %>
 </div>
 

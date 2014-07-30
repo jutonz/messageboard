@@ -1,0 +1,8 @@
+<%= bootstrap_form_for @user, html: { class: 'form-signin'} do |form| %>
+  <%= form.text_field :display_name, value: @user.display_name %>
+  <%= form.email_field :email, value: @user.email %>
+  <%= form.password_field :password_old, label: 'Current password' %>
+  <%= form.password_field :password, label: 'New password' %>
+  <%= form.password_field :password_confirmation, label: 'New password confirmation' %>
+  <%= form.submit 'Update account', class: 'btn btn-lg btn-primary btn-block' %>
+<% end %>

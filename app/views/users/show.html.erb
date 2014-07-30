@@ -9,6 +9,8 @@
       <li>You joined us on <%= @displayed_user.join_date %>. (That's <%= @displayed_user.time_since_joined %>)</li>
       <li>Since then you have made <%= pluralize(@posts.length, 'post') %> and commented <%= @comments.length %> times.</li>
     </ul>
+    <h2>Account management</h2>
+      <p>Click <%= link_to 'here', edit_user_path(@displayed_user) %> to change your display name, email address, or password.</p> 
     <h2>Posts you've made</h2>
     <% if @posts.any? %>
       <%= render partial: 'posts/posts_table', object: @posts %>
