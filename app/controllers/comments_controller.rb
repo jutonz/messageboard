@@ -11,7 +11,17 @@ class CommentsController < ApplicationController
 	end
 
 	def edit
-		
+		@comment = @post.comments.find(params[:id])
+	end
+
+	def update
+		@comment = @post.comments.find params[:id]
+		@comment.contents = comment_params[:contents]
+		if @comment.save
+			redirect_to post_path(@post)
+		else
+			render 'comments/edit'
+		end
 	end
 
 	def create
@@ -25,7 +35,7 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		if current_user.admin?
+		if can? :destroy, @comment
 			comment = @post.comments.find_by id: params[:id]
 			comment.try :destroy
 		end

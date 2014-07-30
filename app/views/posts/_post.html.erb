@@ -1,0 +1,11 @@
+<div class="jumbotron">
+  <h1><%= post.title %></h1>
+  <p class="lead"><%= post.contents %></p>
+  <p class="text-muted">Posted by <%= render partial: 'link_to_post_author', locals: { post: post } %> on <%= post.formatted_date %></p>
+  <% if can? :update, post %>
+    <p><%= link_to 'Edit', edit_post_path(post) %></p>  
+  <% end %>
+  <% if can? :destroy, post %>
+    <p><%= link_to 'Delete', post_path(post), method: 'delete' %></p>
+  <% end %> 
+</div>

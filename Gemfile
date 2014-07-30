@@ -36,13 +36,14 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
-gem 'tzinfo'
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+# gem 'tzinfo'
 
+# Use Twitter Bootstrap to handle most styling
 gem 'twitter-bootstrap-rails'
-# Because Bootstrap uses Less
-gem 'less-rails'
 # To automatically handle creating Bootstrap-friendly forms
 gem 'bootstrap_form'
 # For iconic fonts 
 gem 'font-awesome-less'
+# Use CanCan for user permissions
+gem 'cancancan', '~> 1.9'

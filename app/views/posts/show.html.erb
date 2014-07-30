@@ -3,11 +3,7 @@
   <div class="span3">Created by <%= @post.created_by %></div>
   <div class="span9"><%= @post.contents %></div>
 </div> -->
-<div class="jumbotron">
-  <h1><%= @post.title %></h1>
-  <p class="lead"><%= @post.contents %></p>
-  <p class="text-muted">Posted by <%= render partial: 'link_to_post_author', locals: { post: @post } %> on <%= @post.formatted_date %></p>
-</div>
+<%= render @post %>
 
 <h3>Comments</h3>
 <% if @comments.any? %>

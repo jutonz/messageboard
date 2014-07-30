@@ -5,10 +5,10 @@
   <% else %>
     <footer><%= link_to comment.created_by, user_path(comment.user_id) %> on <%= comment.formatted_date %></footer>
   <% end %>
-  <% if current_user.admin? %>
+  <% if can? :destroy, comment %>
     <footer><%= link_to 'Delete', post_comment_path(@post, comment), method: 'delete' %></footer>
   <% end %>
-  <% if current_user.id == comment.user_id %>
+  <% if can? :update, comment %>
     <footer><%= link_to 'Edit', edit_post_comment_path(@post, comment) %></footer>
   <% end %>
 </blockquote>
