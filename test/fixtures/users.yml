@@ -5,6 +5,7 @@ justin:
   display_name: Justin Toniazzo
   email: justin@example.com
   admin: true
+  created_at: 2014-07-22 21:57:39
 
 jeremy:
   password_digest: <%= BCrypt::Password.create("kittycat") %>

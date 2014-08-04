@@ -41,6 +41,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Twitter Bootstrap to handle most styling
 gem 'twitter-bootstrap-rails'
+gem 'less-rails'
 # To automatically handle creating Bootstrap-friendly forms
 gem 'bootstrap_form'
 # For iconic fonts 
