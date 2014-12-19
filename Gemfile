@@ -40,11 +40,16 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'tzinfo'
 
 # Use Twitter Bootstrap to handle most styling
-gem 'twitter-bootstrap-rails'
 gem 'less-rails'
+gem 'twitter-bootstrap-rails', '2.2.8'
 # To automatically handle creating Bootstrap-friendly forms
 gem 'bootstrap_form'
 # For iconic fonts 
 gem 'font-awesome-less'
 # Use CanCan for user permissions
 gem 'cancancan', '~> 1.9'
+
+group :development, :test do
+  # Use RSpec for testing
+  gem 'rspec-rails'
+end
