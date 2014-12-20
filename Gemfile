@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -48,6 +48,8 @@ gem 'bootstrap_form'
 gem 'font-awesome-less'
 # Use CanCan for user permissions
 gem 'cancancan', '~> 1.9'
+# Use Postgres as the database
+gem 'pg'
 
 group :development, :test do
   # Use RSpec for testing
